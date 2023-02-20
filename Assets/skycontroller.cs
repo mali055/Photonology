@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class skycontroller : MonoBehaviour
+public class Skycontroller : MonoBehaviour
 {
     public Camera cam;
     public GameObject sky1;

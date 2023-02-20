@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class spinWheel : MonoBehaviour
+public class SpinWheel : MonoBehaviour
 {
     public GameObject metal1;
     public GameObject metal2;
@@ -11,39 +13,46 @@ public class spinWheel : MonoBehaviour
     public GameObject metal4;
     public GameObject metal5;
     public GameObject metal6;
+    public GameObject metal7;
+    public GameObject metal8;
+    public GameObject metal9;
+    public GameObject metal10;
+    public GameObject metal11;
+    public GameObject metal12;
+    public GameObject metal13;
+    public GameObject metal14;
+    public GameObject metal15;
     public GameObject metalName;
     public float spinSpeed = 0.3f;
     private bool spinStarted;
     //private float ntime;
-    private int frameCount;
-    private int resetCount;
-    public int resetTime;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private int loopCount;
+    public float resetDist;
+    public int loops;
+    public int metalGap;
 
-    // Update is called once per frame
     void Update()
     {
         if (spinStarted)
         {
-            //Debug.Log("Frame Called " + frameCount);
-            frameCount++;
-            if (frameCount == 661)
+            if (loopCount == loops)
             {
                 metalName.SetActive(true);
                 spinStarted = false;
-
-            } else
+            }
+            else
             {
-                transform.Translate(spinSpeed, 0, 0);
-                resetCount++;
-                if (resetCount == resetTime)
+                RectTransform rect = GetComponent<RectTransform>();
+                Vector2 tPos = rect.anchoredPosition;
+                rect.anchoredPosition = new(tPos.x + spinSpeed, tPos.y);
+
+                //Debug.Break();
+                resetDist += spinSpeed;
+                if (resetDist >= metalGap)
                 {
-                    transform.Translate(- (spinSpeed * resetTime), 0, 0);
-                    resetCount = 0;
+                    rect.anchoredPosition = new(tPos.x - resetDist + spinSpeed, tPos.y);
+                    resetDist = 0;
+                    loopCount++;
                 }
                 //metal7.GetComponent<Image>().material.SetTextureOffset("_MainTex", new Vector2(((Time.time - ntime) * spinSpeed), 0f));
             }
@@ -53,9 +62,9 @@ public class spinWheel : MonoBehaviour
     public GameObject spin()
     {
         Debug.Log("Spin Called");
-        frameCount = 0;
-        resetCount = 0;
+        loopCount = 0;
+        resetDist = 0;
         spinStarted = true;
-        return metal4;
+        return metal8;
     }
 }

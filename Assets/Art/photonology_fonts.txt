@@ -1,0 +1,5 @@
+Metal 'font ( Amarante )
+Light Frequency 'font ( Almarai )
+KE x Number of electrons 'font ( Aleo ) 
+LEADER BOARD title 'font ( Alegreya Sans )
+Leader board result and tite 'font ( Roboto )
