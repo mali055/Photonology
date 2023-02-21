@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class SpinWheel : MonoBehaviour
 {
@@ -23,6 +19,8 @@ public class SpinWheel : MonoBehaviour
     public GameObject metal14;
     public GameObject metal15;
     public GameObject metalName;
+    public GameObject workFunc;
+    public float wFunc = 0f;
     public float spinSpeed = 0.3f;
     private bool spinStarted;
     //private float ntime;
@@ -39,6 +37,8 @@ public class SpinWheel : MonoBehaviour
             {
                 metalName.SetActive(true);
                 spinStarted = false;
+                workFunc.GetComponent<TextMeshProUGUI>().text = "Work Function\n" + wFunc.ToString("N2") + "\neV";
+                workFunc.SetActive(true);
             }
             else
             {

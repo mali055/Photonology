@@ -91,7 +91,8 @@ public class Scope : MonoBehaviour
             metalName.GetComponent<TextMeshProUGUI>().text = metals[_sMetal];
             GameObject metalGO = metalParent.GetComponent<SpinWheel>().spin();
             metalGO.GetComponent<Image>().sprite = metalActive;
-            freqName.GetComponent<TextMeshProUGUI>().text = "Light Frequency\n" + newFreq.ToString("0.##E+0", CultureInfo.InvariantCulture).Replace("E-", "x10<sup>-").Replace("E+", "x10<sup>") + "</sup>Ghz";
+            metalParent.GetComponent<SpinWheel>().wFunc = ev[_sMetal];
+            freqName.GetComponent<TextMeshProUGUI>().text = "Light Frequency\n" + newFreq.ToString("0.##E+0", CultureInfo.InvariantCulture).Replace("E-", "x10<sup>-").Replace("E+", "x10<sup>") + "</sup>\nGhz";
             freqName.SetActive(true);
             chargingB.SetActive(true);
             beam.GetComponent<DynamicScaler>().targetA = star;
